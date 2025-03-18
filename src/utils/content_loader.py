@@ -1,6 +1,6 @@
 import yaml
 from pathlib import Path
-from config import POSTS_DIR
+from ..config import POSTS_DIR
 
 class ContentLoader:
     @staticmethod
