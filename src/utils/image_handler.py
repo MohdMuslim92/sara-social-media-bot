@@ -1,6 +1,6 @@
 from PIL import Image
 from pathlib import Path
-from config import IMAGE_DIR
+from ..config import IMAGE_DIR
 
 class ImageHandler:
     @staticmethod

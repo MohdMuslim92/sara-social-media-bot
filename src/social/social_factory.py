@@ -1,6 +1,6 @@
 from .facebook import FacebookHandler
 from .twitter import TwitterHandler
-from config import PLATFORMS
+from ..config import PLATFORMS
 
 class SocialFactory:
     @staticmethod
