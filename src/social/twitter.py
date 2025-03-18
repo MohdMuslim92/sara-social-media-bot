@@ -15,5 +15,5 @@ class TwitterHandler:
             else:
                 self.api.update_status(status=message)
             print("Twitter post successful!")
-        except tweepy.TweepError as e:
+        except tweepy.TweepyException as e:
             print(f"Twitter post failed: {e}")
