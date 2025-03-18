@@ -10,3 +10,5 @@
 2025-03-18 02:19:50,039 - ERROR - Error processing facebook: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/images/ramadan/ramadan-poster.png'
 2025-03-18 02:19:50,039 - ERROR - Error processing twitter: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/images/ramadan/ramadan-poster.png'
 2025-03-18 02:19:50,040 - INFO - Finished ramadan posts at 2025-03-18 02:19:50.040394
+2025-03-18 02:42:48,290 - INFO - Starting ramadan posts at 2025-03-18 02:42:48.290277
+2025-03-18 02:42:48,886 - INFO - Finished ramadan posts at 2025-03-18 02:42:48.886854
