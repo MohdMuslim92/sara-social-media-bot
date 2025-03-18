@@ -3,7 +3,7 @@ name: Ramadan Posts
 on:
   schedule:
     # Run every day at 12 PM UTC (adjust time as needed)
-    - cron: "0 12 * * 0-4,6"  # Sunday (0) to Thursday (4), and Saturday (6)
+    - cron: "25 12 * * 0-4,6"  # Sunday (0) to Thursday (4), and Saturday (6)
 
 jobs:
   post:
