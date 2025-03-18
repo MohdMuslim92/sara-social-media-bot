@@ -30,6 +30,7 @@ jobs:
         TW_CONSUMER_SECRET: ${{ secrets.TW_CONSUMER_SECRET }}
         TW_ACCESS_TOKEN: ${{ secrets.TW_ACCESS_TOKEN }}
         TW_ACCESS_SECRET: ${{ secrets.TW_ACCESS_SECRET }}
+      working-directory: .  # Set working directory to the root of the repository
       run: python src/main.py --type ramadan
 
     - name: Commit changes
