@@ -1,0 +1,4 @@
+2025-03-18 01:34:10,415 - INFO - Starting ramadan posts at 2025-03-18 01:34:10.415527
+2025-03-18 01:34:10,422 - ERROR - Error processing facebook: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/images/ramadan/ramadan/ramadan-poster.png'
+2025-03-18 01:34:10,422 - ERROR - Error processing twitter: module 'tweepy' has no attribute 'TweepError'
+2025-03-18 01:34:10,423 - INFO - Finished ramadan posts at 2025-03-18 01:34:10.423044
