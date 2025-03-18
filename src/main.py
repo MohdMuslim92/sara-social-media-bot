@@ -3,9 +3,9 @@ import os
 import yaml
 import logging
 from datetime import datetime
-from src.social.social_factory import SocialFactory
-from src.utils.content_loader import ContentLoader
-from src.utils.image_handler import ImageHandler
+from .social.social_factory import SocialFactory
+from .utils.content_loader import ContentLoader
+from .utils.image_handler import ImageHandler
 
 # Path to store the last posted index for each platform
 STATE_FILE = "post_state.yaml"
