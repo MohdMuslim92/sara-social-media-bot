@@ -41,13 +41,21 @@ def save_state(state):
         logging.error(f"Error saving state: {e}")
 
 def format_post(post, platform):
-    """Format the post text with the Facebook or Twitter footer if applicable."""
+    """Format the post text with the Facebook or Twitter footer and hashtags if applicable."""
     try:
         text = post["text"]
+
+        # Add platform-specific footer
         if platform == "facebook" and "facebook_footer" in post:
             text += "\n\n" + post["facebook_footer"]
         elif platform == "twitter" and "twitter_footer" in post:
             text += "\n\n" + post["twitter_footer"]
+
+        # Add hashtags
+        if "hashtags" in post:
+            hashtags = " ".join(f"#{tag}" for tag in post["hashtags"])
+            text += "\n\n" + hashtags
+
         return text
     except Exception as e:
         logging.error(f"Error formatting post: {e}")
