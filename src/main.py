@@ -102,14 +102,13 @@ def main(post_type):
                     logging.error(f"Failed to format post for {platform}. Skipping.")
                     continue
 
-                # Get the image path if available
+                # Get the image path if available (skip for Twitter)
                 image_path = None
-                if "image" in post:
+                if platform != "twitter" and "image" in post:
                     try:
                         image_path = ImageHandler.get_image_path(post_type, post["image"])
                     except Exception as e:
                         logging.error(f"Error loading image for {platform}: {e}")
-
                 # Post to the platform
                 handler = SocialFactory.get_handler(platform)
                 handler.post(formatted_text, image_path)
