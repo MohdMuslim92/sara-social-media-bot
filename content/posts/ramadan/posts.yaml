@@ -10,7 +10,7 @@
           باسم منظمة @shar3.kassala
   hashtags: ["رمضان", "شارع_الحوادث", "السودان", "الخير_في_رمضان"]
   platforms: ["twitter", "facebook"]
-  image: "ramadan/ramadan-poster.png"
+  image: "ramadan-poster.png"
 
 - post_id: ramadan_002
   text: |
@@ -24,7 +24,7 @@
           باسم منظمة @shar3.kassala
   hashtags: ["رمضان", "شارع_الحوادث", "السودان", "الخير_في_يدينا"]
   platforms: ["twitter", "facebook"]
-  image: "ramadan/ramadan-poster.png"
+  image: "ramadan-poster.png"
 
 - post_id: ramadan_003
   text: |
@@ -38,7 +38,7 @@
           باسم منظمة @shar3.kassala
   hashtags: ["رمضان", "شارع_الحوادث", "السودان", "الخير_ما_بيتوقف"]
   platforms: ["twitter", "facebook"]
-  image: "ramadan/ramadan-poster.png"
+  image: "ramadan-poster.png"
 
 - post_id: ramadan_004
   text: |
@@ -53,7 +53,7 @@
           باسم منظمة @shar3.kassala
   hashtags: ["رمضان", "شارع_الحوادث", "السودان", "الخير_في_رمضان"]
   platforms: ["facebook"]
-  image: "ramadan/ramadan-poster.png"
+  image: "ramadan-poster.png"
 
 - post_id: ramadan_005
   text: |
@@ -68,7 +68,7 @@
           باسم منظمة @shar3.kassala
   hashtags: ["رمضان", "شارع_الحوادث", "السودان", "الخير_في_يدينا"]
   platforms: ["facebook"]
-  image: "ramadan/ramadan-poster.png"
+  image: "ramadan-poster.png"
 
 - post_id: ramadan_006
   text: |
@@ -82,4 +82,4 @@
           باسم منظمة @shar3.kassala
   hashtags: ["رمضان", "شارع_الحوادث", "السودان", "الخير_ما_بيتوقف"]
   platforms: ["facebook"]
-  image: "ramadan/ramadan-poster.png"
+  image: "ramadan-poster.png"
