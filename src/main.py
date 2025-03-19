@@ -41,15 +41,13 @@ def save_state(state):
         logging.error(f"Error saving state: {e}")
 
 def format_post(post, platform):
-    """Format the post text with the Facebook or Twitter footer and hashtags if applicable."""
+    """Format the post text with the Facebook footer and hashtags if applicable."""
     try:
         text = post["text"]
 
-        # Add platform-specific footer
+        # Add Facebook footer if exists
         if platform == "facebook" and "facebook_footer" in post:
             text += "\n\n" + post["facebook_footer"]
-        elif platform == "twitter" and "twitter_footer" in post:
-            text += "\n\n" + post["twitter_footer"]
 
         # Add hashtags
         if "hashtags" in post:
@@ -102,13 +100,14 @@ def main(post_type):
                     logging.error(f"Failed to format post for {platform}. Skipping.")
                     continue
 
-                # Get the image path if available (skip for Twitter)
+                # Get the image path if available
                 image_path = None
-                if platform != "twitter" and "image" in post:
+                if "image" in post:
                     try:
                         image_path = ImageHandler.get_image_path(post_type, post["image"])
                     except Exception as e:
                         logging.error(f"Error loading image for {platform}: {e}")
+
                 # Post to the platform
                 handler = SocialFactory.get_handler(platform)
                 handler.post(formatted_text, image_path)
