@@ -2,8 +2,8 @@ name: Ramadan Posts
 
 on:
   schedule:
-    # Run every day at 2:30 PM UTC (adjust time as needed)
-    - cron: "30 14 * * 0-4,6"  # Sunday (0) to Thursday (4), and Saturday (6)
+    # Run every day at 12:00 AM UTC (adjust time as needed)
+    - cron: "0 0 * * 0-4,6"  # Sunday (0) to Thursday (4), and Saturday (6)
   workflow_dispatch:  # Enable manual triggering
 
 jobs:
