@@ -15,7 +15,8 @@ class SocialFactory:
                 PLATFORMS["twitter"]["consumer_key"],
                 PLATFORMS["twitter"]["consumer_secret"],
                 PLATFORMS["twitter"]["access_token"],
-                PLATFORMS["twitter"]["access_secret"]
+                PLATFORMS["twitter"]["access_secret"],
+                PLATFORMS["twitter"]["bearer_token"]
             )
         else:
             raise ValueError(f"Unsupported platform: {platform}")
