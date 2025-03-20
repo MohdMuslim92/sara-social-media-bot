@@ -1,0 +1,42 @@
+name: Friday Posts
+
+on:
+  schedule:
+    # Run every Friday at 12:00 PM UTC
+    - cron: "0 12 * * 5"
+  workflow_dispatch:  # Enable manual triggering
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run Friday posts
+      env:
+        FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        FB_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN }}
+        TW_CONSUMER_KEY: ${{ secrets.TW_CONSUMER_KEY }}
+        TW_CONSUMER_SECRET: ${{ secrets.TW_CONSUMER_SECRET }}
+        TW_ACCESS_TOKEN: ${{ secrets.TW_ACCESS_TOKEN }}
+        TW_ACCESS_SECRET: ${{ secrets.TW_ACCESS_SECRET }}
+      working-directory: .  # Set working directory to the root of the repository
+      run: python -m src.main --type friday
+
+    - name: Commit changes
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add friday_state.yaml logs.txt
+        git commit -m "Update Friday state and logs after run" || echo "No changes to commit"
+        git push
