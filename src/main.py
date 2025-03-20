@@ -8,7 +8,8 @@ from .utils.content_loader import ContentLoader
 from .utils.image_handler import ImageHandler
 
 # Path to store the last posted index for each platform
-STATE_FILE = "post_state.yaml"
+STATE_FILE = "post_state.yaml"  # For Ramadan posts
+FRIDAY_STATE_FILE = "friday_state.yaml"  # For Friday posts
 LOG_FILE = "logs.txt"
 
 # Set up logging
@@ -21,21 +22,21 @@ logging.basicConfig(
     ]
 )
 
-def load_state():
+def load_state(state_file):
     """Load the last posted index for each platform."""
     try:
-        if os.path.exists(STATE_FILE):
-            with open(STATE_FILE, "r", encoding="utf-8") as file:
+        if os.path.exists(state_file):
+            with open(state_file, "r", encoding="utf-8") as file:
                 return yaml.safe_load(file) or {"facebook": 0, "twitter": 0}
         return {"facebook": 0, "twitter": 0}
     except Exception as e:
         logging.error(f"Error loading state: {e}")
         return {"facebook": 0, "twitter": 0}
 
-def save_state(state):
+def save_state(state, state_file):
     """Save the current state to the file."""
     try:
-        with open(STATE_FILE, "w", encoding="utf-8") as file:
+        with open(state_file, "w", encoding="utf-8") as file:
             yaml.safe_dump(state, file)
     except Exception as e:
         logging.error(f"Error saving state: {e}")
@@ -83,7 +84,8 @@ def main(post_type):
         posts = ContentLoader.load_posts(post_type)
 
         # Load the last posted index for each platform
-        state = load_state()
+        state_file = FRIDAY_STATE_FILE if post_type == "friday" else STATE_FILE
+        state = load_state(state_file)
 
         # Process posts for each platform
         for platform in ["facebook", "twitter"]:
@@ -118,7 +120,7 @@ def main(post_type):
                 logging.error(f"Error processing {platform}: {e}")
 
         # Save the updated state
-        save_state(state)
+        save_state(state, state_file)
     except Exception as e:
         logging.error(f"Unexpected error in main: {e}")
     finally:
