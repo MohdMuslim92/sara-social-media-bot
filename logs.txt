@@ -44,3 +44,8 @@
 2025-03-21 12:15:49,215 - INFO - Uploaded media: 1903057957442686980
 2025-03-21 12:15:49,511 - INFO - Twitter post successful
 2025-03-21 12:15:49,512 - INFO - Finished friday posts at 2025-03-21 12:15:49.512159
+2025-03-21 12:27:13,487 - INFO - Starting friday posts at 2025-03-21 12:27:13.487186
+2025-03-21 12:27:16,896 - INFO - Twitter authentication successful
+2025-03-21 12:27:17,454 - INFO - Uploaded media: 1903060844197318657
+2025-03-21 12:27:17,813 - INFO - Twitter post successful
+2025-03-21 12:27:17,814 - INFO - Finished friday posts at 2025-03-21 12:27:17.814484
