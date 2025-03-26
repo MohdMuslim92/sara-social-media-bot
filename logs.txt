@@ -74,3 +74,8 @@
 2025-03-25 22:12:07,890 - INFO - Uploaded media: 1904657575573876736
 2025-03-25 22:12:08,249 - INFO - Twitter post successful
 2025-03-25 22:12:08,250 - INFO - Finished ramadan posts at 2025-03-25 22:12:08.250077
+2025-03-26 22:12:00,140 - INFO - Starting ramadan posts at 2025-03-26 22:12:00.140664
+2025-03-26 22:12:03,081 - INFO - Twitter authentication successful
+2025-03-26 22:12:03,539 - INFO - Uploaded media: 1905019945366532097
+2025-03-26 22:12:03,874 - INFO - Twitter post successful
+2025-03-26 22:12:03,874 - INFO - Finished ramadan posts at 2025-03-26 22:12:03.874678
