@@ -10,6 +10,7 @@ from .utils.image_handler import ImageHandler
 # Path to store the last posted index for each platform
 STATE_FILE = "post_state.yaml"  # For Ramadan posts
 FRIDAY_STATE_FILE = "friday_state.yaml"  # For Friday posts
+DAILY_STATE_FILE = "daily_state.yaml"  # For Monday and Thursday posts
 LOG_FILE = "logs.txt"
 
 # Set up logging
@@ -83,8 +84,14 @@ def main(post_type):
         # Load posts
         posts = ContentLoader.load_posts(post_type)
 
-        # Load the last posted index for each platform
-        state_file = FRIDAY_STATE_FILE if post_type == "friday" else STATE_FILE
+        # Select the correct state file based on post type
+        if post_type == "friday":
+            state_file = FRIDAY_STATE_FILE
+        elif post_type == "daily":
+            state_file = DAILY_STATE_FILE
+        else:
+            state_file = STATE_FILE  # Default (e.g., Ramadan)
+
         state = load_state(state_file)
 
         # Process posts for each platform
@@ -129,7 +136,7 @@ def main(post_type):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--type", required=True, help="Type of posts (e.g., friday, ramadan)")
+    parser.add_argument("--type", required=True, help="Type of posts (e.g., friday, ramadan, daily)")
     args = parser.parse_args()
 
     main(args.type)
