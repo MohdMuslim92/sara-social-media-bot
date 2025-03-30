@@ -89,3 +89,9 @@
 2025-03-28 22:12:15,140 - INFO - Uploaded media: 1905744769214713856
 2025-03-28 22:12:15,586 - INFO - Twitter post successful
 2025-03-28 22:12:15,586 - INFO - Finished ramadan posts at 2025-03-28 22:12:15.586837
+2025-03-30 22:08:03,190 - INFO - Starting daily posts at 2025-03-30 22:08:03.190632
+2025-03-30 22:08:03,192 - ERROR - Unexpected error in main: while parsing a block mapping
+  in "/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/posts/daily/posts.yaml", line 1, column 3
+expected <block end>, but found ','
+  in "/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/posts/daily/posts.yaml", line 13, column 31
+2025-03-30 22:08:03,192 - INFO - Finished daily posts at 2025-03-30 22:08:03.192279
