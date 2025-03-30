@@ -10,7 +10,7 @@
           باسم منظمة #شارع_الحوادث
   hashtags: ["شارع_الحوادث", "السودان", "الخير_في_يدينا"]
   platforms: ["twitter", "facebook"]
-  image: "daily/daily_001.png",
+  image: "daily/daily_001.png"
 
 - post_id: daily_002
   text: |
