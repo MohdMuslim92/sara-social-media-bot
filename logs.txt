@@ -95,3 +95,8 @@
 expected <block end>, but found ','
   in "/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/posts/daily/posts.yaml", line 13, column 31
 2025-03-30 22:08:03,192 - INFO - Finished daily posts at 2025-03-30 22:08:03.192279
+2025-03-30 22:15:33,804 - INFO - Starting daily posts at 2025-03-30 22:15:33.804350
+2025-03-30 22:15:33,810 - ERROR - Error processing facebook: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/images/daily/daily/daily_001.png'
+2025-03-30 22:15:33,943 - INFO - Twitter authentication successful
+2025-03-30 22:15:33,944 - ERROR - Error processing twitter: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/images/daily/daily/daily_001.png'
+2025-03-30 22:15:33,944 - INFO - Finished daily posts at 2025-03-30 22:15:33.944567
