@@ -30,13 +30,20 @@ jobs:
         TW_CONSUMER_SECRET: ${{ secrets.TW_CONSUMER_SECRET }}
         TW_ACCESS_TOKEN: ${{ secrets.TW_ACCESS_TOKEN }}
         TW_ACCESS_SECRET: ${{ secrets.TW_ACCESS_SECRET }}
-      working-directory: .  # Set working directory to the root of the repository
       run: python -m src.main --type daily
+
+    - name: Ensure daily_state.yaml exists
+      run: |
+        if [ ! -f daily_state.yaml ]; then
+          touch daily_state.yaml
+          echo "{}" > daily_state.yaml
+        fi
 
     - name: Commit changes
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
-        git add daily_state.yaml logs.txt
+        git add logs.txt
+        if [ -f daily_state.yaml ]; then git add daily_state.yaml; fi
         git commit -m "Update daily state and logs after run" || echo "No changes to commit"
         git push
