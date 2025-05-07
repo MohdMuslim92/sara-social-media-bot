@@ -52,14 +52,30 @@ def load_state(state_file):
     Returns:
         dict: Dictionary with last posted indices per platform.
     """
+    default_state = {
+        "facebook": {"post_index": 0, "image_index": 0},
+        "twitter": {"post_index": 0, "image_index": 0}
+    }
     try:
         if os.path.exists(state_file):
             with open(state_file, "r", encoding="utf-8") as file:
-                return yaml.safe_load(file) or {"facebook": 0, "twitter": 0}
-        return {"facebook": 0, "twitter": 0}
+                loaded_state = yaml.safe_load(file) or {}
+                # Migrate old state format to new structure
+                for platform in ["facebook", "twitter"]:
+                    if platform in loaded_state:
+                        if isinstance(loaded_state[platform], int):
+                            loaded_state[platform] = {
+                                "post_index": loaded_state[platform],
+                                "image_index": 0
+                            }
+                    loaded_state.setdefault(platform, default_state[platform].copy())
+                    loaded_state[platform].setdefault("post_index", 0)
+                    loaded_state[platform].setdefault("image_index", 0)
+                return loaded_state
+        return default_state.copy()
     except (OSError, yaml.YAMLError) as e:
         logging.error("Error loading state: %s", e)
-        return {"facebook": 0, "twitter": 0}
+        return default_state.copy()
 
 def save_state(state, state_file):
     """
@@ -131,66 +147,89 @@ def get_next_post(posts, platform, last_index):
 def main(post_type):
     """
     Main function to load, format, and publish posts to different platforms.
-
-    Args:
-        post_type (str): The type of posts to process (e.g., 'friday', 'ramadan', 'daily').
     """
     try:
-        # Log the start of the process
         logging.info("Starting %s posts at %s", post_type, datetime.now())
-
-        # Load posts
         posts = ContentLoader.load_posts(post_type)
-
-        # Select the correct state file based on post type
-        if post_type == "friday":
-            state_file = FRIDAY_STATE_FILE
-        elif post_type == "daily":
-            state_file = DAILY_STATE_FILE
-        else:
-            state_file = STATE_FILE  # Default (e.g., Ramadan)
-
+        state_file = get_state_file(post_type)
         state = load_state(state_file)
 
-        # Process posts for each platform
+        # Process each platform in separate function
         for platform in ["facebook", "twitter"]:
-            try:
-                # Get the next post for the platform
-                post, next_index = get_next_post(posts, platform, state[platform])
-                if not post:
-                    logging.warning("No posts found for %s. Skipping.", platform)
-                    continue
+            process_platform_posts(platform, posts, state, post_type)
 
-                # Format the post text
-                formatted_text = format_post(post, platform)
-                if not formatted_text:
-                    logging.error("Failed to format post for %s. Skipping.", platform)
-                    continue
-
-                # Get the image path if available
-                image_path = None
-                if "image" in post:
-                    try:
-                        image_path = ImageHandler.get_image_path(post_type, post["image"])
-                    except (OSError, IOError) as e:
-                        logging.error(f"Error loading image for {platform}: %s", e)
-
-                # Post to the platform
-                handler = SocialFactory.get_handler(platform)
-                handler.post(formatted_text, image_path)
-
-                # Update the state
-                state[platform] = next_index
-            except (KeyError, ValueError, OSError, TypeError) as e:
-                logging.error(f"Error processing {platform}: %s", e)
-
-        # Save the updated state
         save_state(state, state_file)
     except (OSError, KeyError, ValueError) as e:
         logging.error("Unexpected error in main: %s", e)
     finally:
-        # Log the end of the process
         logging.info("Finished %s posts at %s", post_type, datetime.now())
+
+def get_state_file(post_type):
+    """Helper to get appropriate state file"""
+    return {
+        "friday": FRIDAY_STATE_FILE,
+        "daily": DAILY_STATE_FILE
+    }.get(post_type, STATE_FILE)
+
+def process_platform_posts(platform, posts, state, post_type):
+    """Handle all processing for a single platform"""
+    try:
+        platform_state = state[platform]
+        post_data = get_next_post_data(posts, platform, platform_state["post_index"])
+
+        if not post_data:
+            return
+
+        # Changed: Get both formatted content AND next image index
+        formatted_text, image_path, next_image_index = prepare_post_content(
+            post_data.post,  # Changed: Pass post directly instead of PostData object
+            platform,
+            platform_state["image_index"],
+            post_type
+        )
+
+        if formatted_text:
+            post_content(platform, formatted_text, image_path)
+            # Changed: Use the returned next_image_index directly
+            update_platform_state(platform_state, post_data.next_index, next_image_index)
+
+    except (KeyError, ValueError, OSError, TypeError) as e:
+        logging.error("Error processing %s: %s", platform, e)
+
+def get_next_post_data(posts, platform, current_index):
+    """Retrieve and validate next post"""
+    post, next_index = get_next_post(posts, platform, current_index)
+    if not post:
+        logging.warning("No posts found for %s. Skipping.", platform)
+        return None
+    return type('PostData', (), {'post': post, 'next_index': next_index})
+
+def prepare_post_content(post, platform, current_image_index, post_type):
+    """Format text and prepare image (returns text, path, next_image_index)"""
+    formatted_text = format_post(post, platform)
+    if not formatted_text:
+        return None, None, None
+
+    image_files = ["daily_001.png", "daily_002.jpg"]
+    next_image_index = (current_image_index + 1) % len(image_files)
+
+    try:
+        image_path = ImageHandler.get_image_path(post_type, image_files[current_image_index])
+    except (OSError, IOError) as e:
+        logging.error("Error loading image for %s: %s", platform, e)
+        image_path = None
+
+    return formatted_text, image_path, next_image_index
+
+def post_content(platform, text, image_path):
+    """Execute the actual platform post"""
+    handler = SocialFactory.get_handler(platform)
+    handler.post(text, image_path)
+
+def update_platform_state(state, post_index, image_index):
+    """Update state after successful posting"""
+    state["post_index"] = post_index
+    state["image_index"] = image_index
 
 if __name__ == "__main__":
     # Entry point for the script. Parses command-line arguments and runs main().
