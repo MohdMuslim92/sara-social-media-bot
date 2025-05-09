@@ -1,2 +1,6 @@
-facebook: 2
-twitter: 2
+facebook:
+  image_index: 0
+  post_index: 2
+twitter:
+  image_index: 0
+  post_index: 2
