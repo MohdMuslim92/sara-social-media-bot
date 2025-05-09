@@ -200,3 +200,8 @@ expected <block end>, but found ','
 2025-05-09 12:29:00,373 - INFO - Twitter authentication successful
 2025-05-09 12:29:00,373 - ERROR - Error processing twitter: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/images/friday/daily_001.png'
 2025-05-09 12:29:00,374 - INFO - Finished friday posts at 2025-05-09 12:29:00.374464
+2025-05-09 14:04:02,811 - INFO - Starting friday posts at 2025-05-09 14:04:02.811738
+2025-05-09 14:04:02,818 - ERROR - Error processing facebook: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/images/friday/friday_001.png'
+2025-05-09 14:04:02,941 - INFO - Twitter authentication successful
+2025-05-09 14:04:02,941 - ERROR - Error processing twitter: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/src/../content/images/friday/friday_001.png'
+2025-05-09 14:04:02,942 - INFO - Finished friday posts at 2025-05-09 14:04:02.942556
