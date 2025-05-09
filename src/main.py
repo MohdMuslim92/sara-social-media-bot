@@ -210,7 +210,12 @@ def prepare_post_content(post, platform, current_image_index, post_type):
     if not formatted_text:
         return None, None, None
 
-    image_files = ["daily_001.png", "daily_002.jpg"]
+    # Generate image filenames based on post_type
+    image_files = [
+        f"{post_type}_001.png",
+        f"{post_type}_002.jpg"
+    ]
+
     next_image_index = (current_image_index + 1) % len(image_files)
 
     try:
