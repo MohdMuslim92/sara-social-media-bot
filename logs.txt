@@ -210,3 +210,8 @@ expected <block end>, but found ','
 2025-05-09 14:20:50,915 - INFO - Twitter authentication successful
 2025-05-09 14:20:50,915 - ERROR - Error processing twitter: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/content/images/friday/friday_001.png'
 2025-05-09 14:20:50,916 - INFO - Finished friday posts at 2025-05-09 14:20:50.916106
+2025-05-09 14:25:57,157 - INFO - Starting friday posts at 2025-05-09 14:25:57.157925
+2025-05-09 14:26:03,640 - INFO - Twitter authentication successful
+2025-05-09 14:26:04,215 - INFO - Uploaded media: 1920847741522989056
+2025-05-09 14:26:04,561 - INFO - Twitter post successful
+2025-05-09 14:26:04,562 - INFO - Finished friday posts at 2025-05-09 14:26:04.562628
