@@ -34,6 +34,7 @@ PLATFORMS = {
 }
 
 # Directory paths for content, images, and posts
-CONTENT_DIR = os.path.join(os.path.dirname(__file__), "../content")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CONTENT_DIR = os.path.join(BASE_DIR, "content")
 IMAGE_DIR = os.path.join(CONTENT_DIR, "images")
 POSTS_DIR = os.path.join(CONTENT_DIR, "posts")
