@@ -210,42 +210,39 @@ def prepare_post_content(post, platform, current_image_index, post_type):
     if not formatted_text:
         return None, None, None
 
-    # Dynamically discover available images for this post_type
+    # Generate list of existing image files for the post_type
     image_files = []
-    i = 1
-    max_attempts = 10  # Prevent infinite loop for non-existent images
-    while i <= max_attempts:
-        found = False
-        # Check common image extensions
-        for ext in ['.png', '.jpg', '.jpeg']:
-            filename = f"{post_type}_{i:03d}{ext}"
+    possible_numbers = [1, 2]  # Check up to 2 images by default
+    for num in possible_numbers:
+        for ext in ['png', 'jpg']:
+            filename = f"{post_type}_{num:03d}.{ext}"
             try:
-                ImageHandler.get_image_path(post_type, filename)
-                image_files.append(filename)
-                found = True
-                break  # Only add one version per number
-            except FileNotFoundError:
-                continue
-        if not found:
-            break  # No more images
-        i += 1
+                # Get full path using ImageHandler
+                image_path = ImageHandler.get_image_path(post_type, filename)
+                if image_path and os.path.exists(image_path):
+                    image_files.append(filename)
+                    break  # Add only one file per number
+            except FileNotFoundError as e:
+                logging.debug("Image check error for %s: %s", filename, e)
 
+    # Handle case with no available images
     if not image_files:
-        logging.info("No images available for %s posts", post_type)
-        return formatted_text, None, current_image_index
+        logging.warning("No images found for %s posts", post_type)
+        return formatted_text, None, 0
 
-    # Handle index bounds and calculate next index
+    # Calculate valid indices
     valid_index = current_image_index % len(image_files)
-    next_index = (valid_index + 1) % len(image_files)
+    next_image_index = (current_image_index + 1) % len(image_files)
 
     try:
-        image_path = ImageHandler.get_image_path(post_type, image_files[valid_index])
-    except (FileNotFoundError, IndexError) as e:
-        logging.error("Image loading failed: %s", e)
+        # Get path using the validated index
+        selected_image = image_files[valid_index]
+        image_path = ImageHandler.get_image_path(post_type, selected_image)
+    except (OSError, IOError, IndexError) as e:
+        logging.error("Error loading image for %s: %s", platform, e)
         image_path = None
-        next_index = valid_index  # Maintain current index if loading failed
 
-    return formatted_text, image_path, next_index
+    return formatted_text, image_path, next_image_index
 
 def post_content(platform, text, image_path):
     """Execute the actual platform post"""
