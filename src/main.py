@@ -210,21 +210,42 @@ def prepare_post_content(post, platform, current_image_index, post_type):
     if not formatted_text:
         return None, None, None
 
-    # Generate image filenames based on post_type
-    image_files = [
-        f"{post_type}_001.png",
-        f"{post_type}_002.jpg"
-    ]
+    # Dynamically discover available images for this post_type
+    image_files = []
+    i = 1
+    max_attempts = 10  # Prevent infinite loop for non-existent images
+    while i <= max_attempts:
+        found = False
+        # Check common image extensions
+        for ext in ['.png', '.jpg', '.jpeg']:
+            filename = f"{post_type}_{i:03d}{ext}"
+            try:
+                ImageHandler.get_image_path(post_type, filename)
+                image_files.append(filename)
+                found = True
+                break  # Only add one version per number
+            except FileNotFoundError:
+                continue
+        if not found:
+            break  # No more images
+        i += 1
 
-    next_image_index = (current_image_index + 1) % len(image_files)
+    if not image_files:
+        logging.info("No images available for %s posts", post_type)
+        return formatted_text, None, current_image_index
+
+    # Handle index bounds and calculate next index
+    valid_index = current_image_index % len(image_files)
+    next_index = (valid_index + 1) % len(image_files)
 
     try:
-        image_path = ImageHandler.get_image_path(post_type, image_files[current_image_index])
-    except (OSError, IOError) as e:
-        logging.error("Error loading image for %s: %s", platform, e)
+        image_path = ImageHandler.get_image_path(post_type, image_files[valid_index])
+    except (FileNotFoundError, IndexError) as e:
+        logging.error("Image loading failed: %s", e)
         image_path = None
+        next_index = valid_index  # Maintain current index if loading failed
 
-    return formatted_text, image_path, next_image_index
+    return formatted_text, image_path, next_index
 
 def post_content(platform, text, image_path):
     """Execute the actual platform post"""
