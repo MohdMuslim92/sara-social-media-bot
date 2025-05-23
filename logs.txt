@@ -260,3 +260,7 @@ expected <block end>, but found ','
 2025-05-23 11:38:19,497 - INFO - Twitter authentication successful
 2025-05-23 11:38:19,497 - ERROR - Error processing twitter: [Errno 2] No such file or directory: '/home/runner/work/sara-social-media-bot/sara-social-media-bot/content/images/friday/friday_002.png'
 2025-05-23 11:38:19,498 - INFO - Finished friday posts at 2025-05-23 11:38:19.498674
+2025-05-23 12:00:41,993 - INFO - Starting friday posts at 2025-05-23 12:00:41.993120
+2025-05-23 12:00:47,558 - INFO - Twitter authentication successful
+2025-05-23 12:00:47,975 - ERROR - Twitter post failed: 413 Payload Too Large
+2025-05-23 12:00:47,976 - INFO - Finished friday posts at 2025-05-23 12:00:47.976809
