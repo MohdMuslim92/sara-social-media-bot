@@ -264,3 +264,8 @@ expected <block end>, but found ','
 2025-05-23 12:00:47,558 - INFO - Twitter authentication successful
 2025-05-23 12:00:47,975 - ERROR - Twitter post failed: 413 Payload Too Large
 2025-05-23 12:00:47,976 - INFO - Finished friday posts at 2025-05-23 12:00:47.976809
+2025-05-23 12:29:36,193 - INFO - Starting friday posts at 2025-05-23 12:29:36.193229
+2025-05-23 12:29:39,630 - INFO - Twitter authentication successful
+2025-05-23 12:29:42,503 - INFO - Uploaded media: 1925891879242960898
+2025-05-23 12:29:44,204 - INFO - Twitter post successful
+2025-05-23 12:29:44,205 - INFO - Finished friday posts at 2025-05-23 12:29:44.205407
