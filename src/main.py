@@ -210,39 +210,45 @@ def prepare_post_content(post, platform, current_image_index, post_type):
     if not formatted_text:
         return None, None, None
 
-    # Generate list of existing image files for the post_type
-    image_files = []
-    possible_numbers = [1, 2]  # Check up to 2 images by default
-    for num in possible_numbers:
-        for ext in ['png', 'jpg']:
-            filename = f"{post_type}_{num:03d}.{ext}"
-            try:
-                # Get full path using ImageHandler
-                image_path = ImageHandler.get_image_path(post_type, filename)
-                if image_path and os.path.exists(image_path):
-                    image_files.append(filename)
-                    break  # Add only one file per number
-            except FileNotFoundError as e:
-                logging.debug("Image check error for %s: %s", filename, e)
-
-    # Handle case with no available images
-    if not image_files:
+    sorted_paths = _get_sorted_image_paths(post_type)
+    if not sorted_paths:
         logging.warning("No images found for %s posts", post_type)
         return formatted_text, None, 0
 
-    # Calculate valid indices
-    valid_index = current_image_index % len(image_files)
-    next_image_index = (current_image_index + 1) % len(image_files)
+    # Use modulo to cycle through available images
+    total = len(sorted_paths)
+    current_idx = current_image_index % total
+    next_idx = (current_image_index + 1) % total
 
-    try:
-        # Get path using the validated index
-        selected_image = image_files[valid_index]
-        image_path = ImageHandler.get_image_path(post_type, selected_image)
-    except (OSError, IOError, IndexError) as e:
-        logging.error("Error loading image for %s: %s", platform, e)
-        image_path = None
+    selected_image = sorted_paths[current_idx]
+    return formatted_text, selected_image, next_idx
 
-    return formatted_text, image_path, next_image_index
+
+def _get_sorted_image_paths(post_type):
+    """
+    Retrieve and sort image paths based on the post_type prefix.
+    Returns a list of sorted image Path objects.
+    """
+    image_dir = ImageHandler.get_image_path(post_type, "")
+    image_paths = []
+
+    # Gather all image paths with valid extensions and the right prefix
+    for ext in ['png', 'jpg']:
+        pattern = f"{post_type}_*.{ext}"
+        image_paths.extend(image_dir.glob(pattern))
+
+    valid_images = []
+    for path in image_paths:
+        try:
+            # Extract image number from filename (e.g., "daily_001.jpg" -> 1)
+            num = int(path.stem.split('_')[-1])
+            valid_images.append((num, path))
+        except (ValueError, IndexError):
+            continue  # Skip files with incorrect naming
+
+    # Sort by extracted number
+    valid_images.sort(key=lambda x: x[0])
+    return [img[1] for img in valid_images]
 
 def post_content(platform, text, image_path):
     """Execute the actual platform post"""
