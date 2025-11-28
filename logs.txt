@@ -679,3 +679,8 @@ expected <block end>, but found ','
 2025-11-27 06:32:59,060 - INFO - Uploaded media: 1993931031527714816
 2025-11-27 06:32:59,978 - INFO - Twitter post successful
 2025-11-27 06:32:59,979 - INFO - Finished daily posts at 2025-11-27 06:32:59.979893
+2025-11-28 12:32:10,660 - INFO - Starting friday posts at 2025-11-28 12:32:10.660209
+2025-11-28 12:32:18,749 - INFO - Twitter authentication successful
+2025-11-28 12:32:19,258 - INFO - Uploaded media: 1994383852073095168
+2025-11-28 12:32:19,595 - INFO - Twitter post successful
+2025-11-28 12:32:19,596 - INFO - Finished friday posts at 2025-11-28 12:32:19.596261
