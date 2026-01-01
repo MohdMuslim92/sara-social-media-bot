@@ -744,3 +744,8 @@ expected <block end>, but found ','
 2025-12-26 12:33:32,378 - INFO - Uploaded media: 2004531019400318976
 2025-12-26 12:33:32,791 - INFO - Twitter post successful
 2025-12-26 12:33:32,792 - INFO - Finished friday posts at 2025-12-26 12:33:32.792436
+2026-01-01 06:34:41,880 - INFO - Starting daily posts at 2026-01-01 06:34:41.880361
+2026-01-01 06:34:46,396 - INFO - Twitter authentication successful
+2026-01-01 06:34:47,120 - INFO - Uploaded media: 2006615062019190787
+2026-01-01 06:34:47,148 - ERROR - Twitter post failed: 403 Forbidden
+2026-01-01 06:34:47,150 - INFO - Finished daily posts at 2026-01-01 06:34:47.150013
