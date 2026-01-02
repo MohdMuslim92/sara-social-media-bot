@@ -744,15 +744,18 @@ expected <block end>, but found ','
 2025-12-26 12:33:32,378 - INFO - Uploaded media: 2004531019400318976
 2025-12-26 12:33:32,791 - INFO - Twitter post successful
 2025-12-26 12:33:32,792 - INFO - Finished friday posts at 2025-12-26 12:33:32.792436
-2026-01-02 13:04:40,834 - INFO - Starting daily posts at 2026-01-02 13:04:40.834358
-2026-01-02 13:04:44,686 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
-2026-01-02 13:04:44,686 - INFO - Prepared v1.1 API client for media upload (no verify performed).
-2026-01-02 13:04:45,450 - INFO - Uploaded media via v1.1; media_ids=['2007075590168358912']
-2026-01-02 13:04:46,895 - INFO - Twitter post successful: tweet id 2007075592257131007
-2026-01-02 13:04:46,896 - INFO - Finished daily posts at 2026-01-02 13:04:46.896692
-2026-01-02 13:29:55,360 - INFO - Starting daily posts at 2026-01-02 13:29:55.360818
-2026-01-02 13:29:59,873 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
-2026-01-02 13:29:59,873 - INFO - Prepared v1.1 API client for media upload (no verify performed).
-2026-01-02 13:30:01,281 - INFO - Uploaded media via v1.1; media_ids=['2007081944622702592']
-2026-01-02 13:30:02,427 - INFO - Twitter post successful: tweet id 2007081950071161273
-2026-01-02 13:30:02,428 - INFO - Finished daily posts at 2026-01-02 13:30:02.428748
+2026-01-01 06:34:41,880 - INFO - Starting daily posts at 2026-01-01 06:34:41.880361
+2026-01-01 06:34:46,396 - INFO - Twitter authentication successful
+2026-01-01 06:34:47,120 - INFO - Uploaded media: 2006615062019190787
+2026-01-01 06:34:47,148 - ERROR - Twitter post failed: 403 Forbidden
+2026-01-01 06:34:47,150 - INFO - Finished daily posts at 2026-01-01 06:34:47.150013
+2026-01-02 12:32:52,127 - INFO - Starting friday posts at 2026-01-02 12:32:52.127378
+2026-01-02 12:32:58,506 - INFO - Twitter authentication successful
+2026-01-02 12:33:00,676 - INFO - Uploaded media: 2007067594302398464
+2026-01-02 12:33:00,730 - ERROR - Twitter post failed: 403 Forbidden
+2026-01-02 12:33:00,731 - INFO - Finished friday posts at 2026-01-02 12:33:00.731801
+2026-01-02 12:58:57,843 - INFO - Starting daily posts at 2026-01-02 12:58:57.843658
+2026-01-02 12:59:01,625 - INFO - Twitter authentication successful
+2026-01-02 12:59:03,092 - INFO - Uploaded media: 2007074150616076289
+2026-01-02 12:59:03,143 - ERROR - Twitter post failed: 403 Forbidden
+2026-01-02 12:59:03,144 - INFO - Finished daily posts at 2026-01-02 12:59:03.144850
