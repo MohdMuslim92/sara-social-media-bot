@@ -22,7 +22,7 @@ class TwitterHandler:
                 access_token_secret=access_secret
             )
 
-            self.api_v1.verify_credentials()
+            # self.api_v1.verify_credentials()
             logging.info("Twitter authentication successful")
         except tweepy.TweepyException as e:
             logging.error(f"Twitter auth failed: {e}")
