@@ -759,3 +759,9 @@ expected <block end>, but found ','
 2026-01-02 12:59:03,092 - INFO - Uploaded media: 2007074150616076289
 2026-01-02 12:59:03,143 - ERROR - Twitter post failed: 403 Forbidden
 2026-01-02 12:59:03,144 - INFO - Finished daily posts at 2026-01-02 12:59:03.144850
+2026-01-05 06:39:46,532 - INFO - Starting daily posts at 2026-01-05 06:39:46.532956
+2026-01-05 06:39:49,270 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
+2026-01-05 06:39:49,270 - INFO - Prepared v1.1 API client for media upload (no verify performed).
+2026-01-05 06:39:49,781 - INFO - Uploaded media via v1.1; media_ids=['2008065883785105408']
+2026-01-05 06:39:50,292 - INFO - Twitter post successful: tweet id 2008065885819298243
+2026-01-05 06:39:50,293 - INFO - Finished daily posts at 2026-01-05 06:39:50.293329
