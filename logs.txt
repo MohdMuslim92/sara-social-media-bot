@@ -807,3 +807,9 @@ expected <block end>, but found ','
 2026-01-22 06:36:55,134 - INFO - Uploaded media via v1.1; media_ids=['2014225744386269184']
 2026-01-22 06:36:56,181 - INFO - Twitter post successful: tweet id 2014225746751783406
 2026-01-22 06:36:56,182 - INFO - Finished daily posts at 2026-01-22 06:36:56.182687
+2026-01-23 12:37:32,233 - INFO - Starting friday posts at 2026-01-23 12:37:32.233679
+2026-01-23 12:37:37,517 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
+2026-01-23 12:37:37,518 - INFO - Prepared v1.1 API client for media upload (no verify performed).
+2026-01-23 12:37:38,026 - INFO - Uploaded media via v1.1; media_ids=['2014678909863002112']
+2026-01-23 12:37:38,317 - INFO - Twitter post successful: tweet id 2014678911507169599
+2026-01-23 12:37:38,318 - INFO - Finished friday posts at 2026-01-23 12:37:38.318651
