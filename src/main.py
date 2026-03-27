@@ -159,7 +159,7 @@ def main(post_type):
             process_platform_posts(platform, posts, state, post_type)
 
         save_state(state, state_file)
-    except (OSError, KeyError, ValueError) as e:
+    except Exception as e:
         logging.error("Unexpected error in main: %s", e)
     finally:
         logging.info("Finished %s posts at %s", post_type, datetime.now())
@@ -193,7 +193,7 @@ def process_platform_posts(platform, posts, state, post_type):
             # Changed: Use the returned next_image_index directly
             update_platform_state(platform_state, post_data.next_index, next_image_index)
 
-    except (KeyError, ValueError, OSError, TypeError) as e:
+    except Exception as e:
         logging.error("Error processing %s: %s", platform, e)
 
 def get_next_post_data(posts, platform, current_index):
