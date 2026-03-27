@@ -975,3 +975,13 @@ expected <block end>, but found ','
 2026-03-27 11:48:37,534 - INFO - Uploaded media via v1.1; media_ids=['2037497010626990081']
 2026-03-27 11:48:37,936 - INFO - Twitter post successful: tweet id 2037497013722288272
 2026-03-27 11:48:37,939 - INFO - Finished daily posts at 2026-03-27 11:48:37.939825
+2026-03-27 12:02:47,446 - INFO - Starting daily posts at 2026-03-27 12:02:47.446081
+2026-03-27 12:02:47,453 - INFO - Posting to Facebook. URL: https://graph.facebook.com/v22.0/575599462304325/photos | Has image: True
+2026-03-27 12:02:48,483 - INFO - Facebook response status: 403
+2026-03-27 12:02:48,484 - INFO - Facebook response body: {"error":{"message":"(#200) The permission(s) publish_actions are not available. It has been deprecated. If you want to provide a way for your app users to share content to Facebook, we encourage you to use our Sharing products instead.","type":"OAuthException","code":200,"fbtrace_id":"AsXR8O92VBLib2zNXr5Zijs"}}
+2026-03-27 12:02:48,484 - ERROR - Facebook post failed with status 403: {"error":{"message":"(#200) The permission(s) publish_actions are not available. It has been deprecated. If you want to provide a way for your app users to share content to Facebook, we encourage you to use our Sharing products instead.","type":"OAuthException","code":200,"fbtrace_id":"AsXR8O92VBLib2zNXr5Zijs"}}
+2026-03-27 12:02:48,688 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
+2026-03-27 12:02:48,688 - INFO - Prepared v1.1 API client for media upload (no verify performed).
+2026-03-27 12:02:49,327 - INFO - Uploaded media via v1.1; media_ids=['2037500583976865793']
+2026-03-27 12:02:49,821 - INFO - Twitter post successful: tweet id 2037500586447216831
+2026-03-27 12:02:49,824 - INFO - Finished daily posts at 2026-03-27 12:02:49.824658
