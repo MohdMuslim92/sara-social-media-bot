@@ -1,4 +1,7 @@
+import logging
 import requests
+
+logger = logging.getLogger(__name__)
 
 class FacebookHandler:
     def __init__(self, page_id, access_token):
@@ -18,8 +21,16 @@ class FacebookHandler:
             files["source"] = open(image_path, "rb")
             data["published"] = "true"
 
+        logger.info("Posting to Facebook. URL: %s | Has image: %s", url, bool(image_path))
         response = requests.post(url, data=data, files=files if files else None)
+        logger.info("Facebook response status: %s", response.status_code)
+        logger.info("Facebook response body: %s", response.text)
+
         if response.status_code == 200:
-            print("Facebook post successful!")
+            result = response.json()
+            if "error" in result:
+                logger.error("Facebook post returned 200 but contains error: %s", result["error"])
+            else:
+                logger.info("Facebook post successful! Post ID: %s", result.get("id") or result.get("post_id"))
         else:
-            print(f"Facebook post failed: {response.text}")
+            logger.error("Facebook post failed with status %s: %s", response.status_code, response.text)
