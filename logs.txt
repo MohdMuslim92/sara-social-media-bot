@@ -1155,3 +1155,13 @@ expected <block end>, but found ','
 2026-04-30 08:11:03,255 - INFO - Uploaded media via v1.1; media_ids=['2049763444841435136']
 2026-04-30 08:11:03,595 - INFO - Twitter post successful: tweet id 2049763447584493984
 2026-04-30 08:11:03,598 - INFO - Finished daily posts at 2026-04-30 08:11:03.598159
+2026-05-01 13:16:12,673 - INFO - Starting friday posts at 2026-05-01 13:16:12.673071
+2026-05-01 13:16:12,680 - INFO - Posting to Facebook. URL: https://graph.facebook.com/v22.0/575599462304325/photos | Has image: True
+2026-05-01 13:16:44,503 - INFO - Facebook response status: 500
+2026-05-01 13:16:44,503 - INFO - Facebook response body: {"error":{"code":1,"message":"An unknown error occurred","error_subcode":99}}
+2026-05-01 13:16:44,503 - ERROR - Facebook post failed with status 500: {"error":{"code":1,"message":"An unknown error occurred","error_subcode":99}}
+2026-05-01 13:16:44,614 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
+2026-05-01 13:16:44,615 - INFO - Prepared v1.1 API client for media upload (no verify performed).
+2026-05-01 13:16:45,119 - INFO - Uploaded media via v1.1; media_ids=['2050202764878204928']
+2026-05-01 13:16:45,469 - INFO - Twitter post successful: tweet id 2050202766761504783
+2026-05-01 13:16:45,471 - INFO - Finished friday posts at 2026-05-01 13:16:45.471765
