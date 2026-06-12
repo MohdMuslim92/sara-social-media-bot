@@ -1335,3 +1335,13 @@ expected <block end>, but found ','
 2026-06-11 10:14:07,240 - INFO - Uploaded media via v1.1; media_ids=['2065014706583248896']
 2026-06-11 10:14:07,669 - INFO - Twitter post successful: tweet id 2065014708768567713
 2026-06-11 10:14:07,671 - INFO - Finished daily posts at 2026-06-11 10:14:07.671897
+2026-06-12 14:55:14,877 - INFO - Starting friday posts at 2026-06-12 14:55:14.877604
+2026-06-12 14:55:14,884 - INFO - Posting to Facebook. URL: https://graph.facebook.com/v22.0/575599462304325/photos | Has image: True
+2026-06-12 14:55:16,883 - INFO - Facebook response status: 500
+2026-06-12 14:55:16,884 - INFO - Facebook response body: {"error":{"message":"An unexpected error has occurred. Please retry your request later.","type":"OAuthException","is_transient":true,"code":2,"fbtrace_id":"AUbUFdOTKgdebB2stzNDej0"}}
+2026-06-12 14:55:16,884 - ERROR - Facebook post failed with status 500: {"error":{"message":"An unexpected error has occurred. Please retry your request later.","type":"OAuthException","is_transient":true,"code":2,"fbtrace_id":"AUbUFdOTKgdebB2stzNDej0"}}
+2026-06-12 14:55:17,029 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
+2026-06-12 14:55:17,029 - INFO - Prepared v1.1 API client for media upload (no verify performed).
+2026-06-12 14:55:17,563 - INFO - Uploaded media via v1.1; media_ids=['2065447853653209088']
+2026-06-12 14:55:17,980 - INFO - Twitter post successful: tweet id 2065447855880278173
+2026-06-12 14:55:17,982 - INFO - Finished friday posts at 2026-06-12 14:55:17.982848
