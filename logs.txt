@@ -1475,3 +1475,13 @@ expected <block end>, but found ','
 2026-07-13 08:56:59,214 - INFO - Uploaded media via v1.1; media_ids=['2076591706858737665']
 2026-07-13 08:56:59,653 - INFO - Twitter post successful: tweet id 2076591709085958544
 2026-07-13 08:56:59,656 - INFO - Finished daily posts at 2026-07-13 08:56:59.656332
+2026-07-16 08:02:10,270 - INFO - Starting daily posts at 2026-07-16 08:02:10.270482
+2026-07-16 08:02:10,278 - INFO - Posting to Facebook. URL: https://graph.facebook.com/v22.0/575599462304325/photos | Has image: True
+2026-07-16 08:02:15,818 - INFO - Facebook response status: 200
+2026-07-16 08:02:15,818 - INFO - Facebook response body: {"id":"122198056448780724","post_id":"575599462304325_122198056478780724"}
+2026-07-16 08:02:15,818 - INFO - Facebook post successful! Post ID: 122198056448780724
+2026-07-16 08:02:15,929 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
+2026-07-16 08:02:15,930 - INFO - Prepared v1.1 API client for media upload (no verify performed).
+2026-07-16 08:02:16,277 - INFO - Uploaded media via v1.1; media_ids=['2077665101499514880']
+2026-07-16 08:02:16,608 - INFO - Twitter post successful: tweet id 2077665102917238941
+2026-07-16 08:02:16,611 - INFO - Finished daily posts at 2026-07-16 08:02:16.611307
