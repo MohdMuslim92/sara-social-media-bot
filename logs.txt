@@ -1780,3 +1780,14 @@ credits depleted
 2026-09-21 11:43:33,038 - ERROR - Twitter post failed: 402 Payment Required
 credits depleted
 2026-09-21 11:43:33,040 - INFO - Finished daily posts at 2026-09-21 11:43:33.040858
+2026-09-24 10:56:21,163 - INFO - Starting daily posts at 2026-09-24 10:56:21.163405
+2026-09-24 10:56:21,170 - INFO - Posting to Facebook. URL: https://graph.facebook.com/v22.0/575599462304325/photos | Has image: True
+2026-09-24 10:56:25,885 - INFO - Facebook response status: 200
+2026-09-24 10:56:25,885 - INFO - Facebook response body: {"id":"122209289684780724","post_id":"575599462304325_122209289708780724"}
+2026-09-24 10:56:25,885 - INFO - Facebook post successful! Post ID: 122209289684780724
+2026-09-24 10:56:26,101 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
+2026-09-24 10:56:26,102 - INFO - Prepared v1.1 API client for media upload (no verify performed).
+2026-09-24 10:56:27,445 - INFO - Uploaded media via v1.1; media_ids=['2103076083902156800']
+2026-09-24 10:56:27,536 - ERROR - Twitter post failed: 402 Payment Required
+credits depleted
+2026-09-24 10:56:27,539 - INFO - Finished daily posts at 2026-09-24 10:56:27.539026
