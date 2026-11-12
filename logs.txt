@@ -2011,3 +2011,14 @@ credits depleted
 2026-11-09 14:54:51,789 - ERROR - Twitter post failed: 402 Payment Required
 credits depleted
 2026-11-09 14:54:51,792 - INFO - Finished daily posts at 2026-11-09 14:54:51.791988
+2026-11-12 15:36:02,755 - INFO - Starting daily posts at 2026-11-12 15:36:02.755122
+2026-11-12 15:36:02,759 - INFO - Posting to Facebook. URL: https://graph.facebook.com/v22.0/575599462304325/photos | Has image: True
+2026-11-12 15:36:03,549 - INFO - Facebook response status: 403
+2026-11-12 15:36:03,549 - INFO - Facebook response body: {"error":{"message":"(#200) The permission(s) publish_actions are not available. It has been deprecated. If you want to provide a way for your app users to share content to Facebook, we encourage you to use our Sharing products instead.","type":"OAuthException","code":200,"fbtrace_id":"AykgBvMYQ9_5ROY4c34vW_5"}}
+2026-11-12 15:36:03,549 - ERROR - Facebook post failed with status 403: {"error":{"message":"(#200) The permission(s) publish_actions are not available. It has been deprecated. If you want to provide a way for your app users to share content to Facebook, we encourage you to use our Sharing products instead.","type":"OAuthException","code":200,"fbtrace_id":"AykgBvMYQ9_5ROY4c34vW_5"}}
+2026-11-12 15:36:03,783 - INFO - Twitter v2 authentication successful for user id: 1895214580454039557
+2026-11-12 15:36:03,783 - INFO - Prepared v1.1 API client for media upload (no verify performed).
+2026-11-12 15:36:04,463 - INFO - Uploaded media via v1.1; media_ids=['2120903460119855104']
+2026-11-12 15:36:04,547 - ERROR - Twitter post failed: 402 Payment Required
+credits depleted
+2026-11-12 15:36:04,549 - INFO - Finished daily posts at 2026-11-12 15:36:04.549925
