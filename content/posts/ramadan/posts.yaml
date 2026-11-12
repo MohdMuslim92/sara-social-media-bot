@@ -9,7 +9,7 @@
       فوري: 421019206
           باسم منظمة #شارع_الحوادث
   hashtags: ["رمضان", "شارع_الحوادث", "السودان", "الخير_في_رمضان"]
-  platforms: ["twitter", "facebook"]
+  platforms: ["facebook"]
   image: "ramadan-poster.png"
 
 - post_id: ramadan_002
@@ -23,7 +23,7 @@
       فوري: 421019206
           باسم منظمة #شارع_الحوادث
   hashtags: ["رمضان", "شارع_الحوادث", "السودان", "الخير_في_يدينا"]
-  platforms: ["twitter", "facebook"]
+  platforms: ["facebook"]
   image: "ramadan-poster.png"
 
 - post_id: ramadan_003
@@ -37,7 +37,7 @@
       فوري: 421019206
           باسم منظمة #شارع_الحوادث
   hashtags: ["رمضان", "شارع_الحوادث", "السودان", "الخير_ما_بيتوقف"]
-  platforms: ["twitter", "facebook"]
+  platforms: ["facebook"]
   image: "ramadan-poster.png"
 
 - post_id: ramadan_004

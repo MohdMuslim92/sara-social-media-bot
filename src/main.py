@@ -2,7 +2,7 @@
 Automated Social Media Poster
 
 This module handles posting pre-written content to social media platforms
-such as Facebook and Twitter. It supports various post types like Friday,
+such as Facebook. It supports various post types like Friday,
 daily, and Ramadan posts, keeps track of the last posted content, and ensures
 content is formatted and published correctly.
 
@@ -54,15 +54,14 @@ def load_state(state_file):
         dict: Dictionary with last posted indices per platform.
     """
     default_state = {
-        "facebook": {"post_index": 0, "image_index": 0},
-        "twitter": {"post_index": 0, "image_index": 0}
+        "facebook": {"post_index": 0, "image_index": 0}
     }
     try:
         if os.path.exists(state_file):
             with open(state_file, "r", encoding="utf-8") as file:
                 loaded_state = yaml.safe_load(file) or {}
                 # Migrate old state format to new structure
-                for platform in ["facebook", "twitter"]:
+                for platform in ["facebook"]:
                     if platform in loaded_state:
                         if isinstance(loaded_state[platform], int):
                             loaded_state[platform] = {
@@ -98,7 +97,7 @@ def format_post(post, platform):
 
     Args:
         post (dict): The post content.
-        platform (str): Target platform (e.g., 'facebook', 'twitter').
+        platform (str): Target platform (e.g., 'facebook').
 
     Returns:
         str or None: Formatted post text or None if formatting fails.
@@ -163,7 +162,7 @@ def main(post_type):
         state = load_state(state_file)
 
         # Process each platform in separate function
-        for platform in ["facebook", "twitter"]:
+        for platform in ["facebook"]:
             if not process_platform_posts(platform, posts, state, post_type):
                 success = False
 

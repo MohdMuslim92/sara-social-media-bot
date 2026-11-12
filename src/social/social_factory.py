@@ -1,5 +1,4 @@
 from .facebook import FacebookHandler
-from .twitter import TwitterHandler
 from ..config import PLATFORMS
 
 class SocialFactory:
@@ -9,14 +8,6 @@ class SocialFactory:
             return FacebookHandler(
                 PLATFORMS["facebook"]["page_id"],
                 PLATFORMS["facebook"]["access_token"]
-            )
-        elif platform == "twitter":
-            return TwitterHandler(
-                PLATFORMS["twitter"]["consumer_key"],
-                PLATFORMS["twitter"]["consumer_secret"],
-                PLATFORMS["twitter"]["access_token"],
-                PLATFORMS["twitter"]["access_secret"],
-                PLATFORMS["twitter"]["bearer_token"]
             )
         else:
             raise ValueError(f"Unsupported platform: {platform}")
