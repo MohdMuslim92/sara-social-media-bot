@@ -9,7 +9,7 @@
       فوري: 421019206
           باسم منظمة #شارع_الحوادث
   hashtags: ["شارع_الحوادث", "السودان", "الخير_في_يدينا"]
-  platforms: ["twitter", "facebook"]
+  platforms: ["facebook"]
   image: "daily_001.png"
 
 - post_id: daily_002
@@ -23,7 +23,7 @@
       فوري: 421019206
           باسم منظمة #شارع_الحوادث
   hashtags: ["شارع_الحوادث", "السودان", "الخير_في_يدينا"]
-  platforms: ["twitter", "facebook"]
+  platforms: ["facebook"]
   image: "daily_001.png"
 
 - post_id: daily_003
@@ -37,7 +37,7 @@
       فوري: 421019206
           باسم منظمة #شارع_الحوادث
   hashtags: ["شارع_الحوادث", "السودان", "الخير_ما_بيتوقف"]
-  platforms: ["twitter", "facebook"]
+  platforms: ["facebook"]
   image: "daily_001.png"
 
 - post_id: daily_004

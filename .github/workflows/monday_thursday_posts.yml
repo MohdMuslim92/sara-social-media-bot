@@ -26,11 +26,6 @@ jobs:
       env:
         FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
         FB_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN }}
-        TW_CONSUMER_KEY: ${{ secrets.TW_CONSUMER_KEY }}
-        TW_CONSUMER_SECRET: ${{ secrets.TW_CONSUMER_SECRET }}
-        TW_ACCESS_TOKEN: ${{ secrets.TW_ACCESS_TOKEN }}
-        TW_ACCESS_SECRET: ${{ secrets.TW_ACCESS_SECRET }}
-        TW_BEARER_TOKEN: ${{ secrets.TW_BEARER_TOKEN }}
       run: python -m src.main --type daily
 
     - name: Ensure daily_state.yaml exists
