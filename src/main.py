@@ -20,6 +20,7 @@ Usage:
 import argparse
 import os
 import logging
+import sys
 from datetime import datetime
 import yaml
 from .social.social_factory import SocialFactory
@@ -147,7 +148,14 @@ def get_next_post(posts, platform, last_index):
 def main(post_type):
     """
     Main function to load, format, and publish posts to different platforms.
+
+    Returns:
+        bool: True if every platform posted successfully (or had nothing to
+            post), False if any platform's post failed or an unexpected error
+            occurred. Callers must check this return value; a failed post
+            must not be reported as a successful run.
     """
+    success = True
     try:
         logging.info("Starting %s posts at %s", post_type, datetime.now())
         posts = ContentLoader.load_posts(post_type)
@@ -156,13 +164,16 @@ def main(post_type):
 
         # Process each platform in separate function
         for platform in ["facebook", "twitter"]:
-            process_platform_posts(platform, posts, state, post_type)
+            if not process_platform_posts(platform, posts, state, post_type):
+                success = False
 
         save_state(state, state_file)
     except Exception as e:
         logging.error("Unexpected error in main: %s", e)
+        success = False
     finally:
         logging.info("Finished %s posts at %s", post_type, datetime.now())
+    return success
 
 def get_state_file(post_type):
     """Helper to get appropriate state file"""
@@ -172,13 +183,21 @@ def get_state_file(post_type):
     }.get(post_type, STATE_FILE)
 
 def process_platform_posts(platform, posts, state, post_type):
-    """Handle all processing for a single platform"""
+    """
+    Handle all processing for a single platform.
+
+    Returns:
+        bool: True if there was nothing to post or the post succeeded, False
+            if content could not be formatted or the platform post failed.
+            The post/image index is only advanced on an actual success, so a
+            failed post is retried next run instead of being silently skipped.
+    """
     try:
         platform_state = state[platform]
         post_data = get_next_post_data(posts, platform, platform_state["post_index"])
 
         if not post_data:
-            return
+            return True
 
         # Changed: Get both formatted content AND next image index
         formatted_text, image_path, next_image_index = prepare_post_content(
@@ -188,13 +207,21 @@ def process_platform_posts(platform, posts, state, post_type):
             post_type
         )
 
-        if formatted_text:
-            post_content(platform, formatted_text, image_path)
-            # Changed: Use the returned next_image_index directly
-            update_platform_state(platform_state, post_data.next_index, next_image_index)
+        if not formatted_text:
+            logging.error("Skipping %s post: could not format content", platform)
+            return False
+
+        if not post_content(platform, formatted_text, image_path):
+            logging.error("Not advancing %s state: post failed", platform)
+            return False
+
+        # Changed: Use the returned next_image_index directly
+        update_platform_state(platform_state, post_data.next_index, next_image_index)
+        return True
 
     except Exception as e:
         logging.error("Error processing %s: %s", platform, e)
+        return False
 
 def get_next_post_data(posts, platform, current_index):
     """Retrieve and validate next post"""
@@ -251,21 +278,26 @@ def _get_sorted_image_paths(post_type):
     return [img[1] for img in valid_images]
 
 def post_content(platform, text, image_path):
-    """Execute the actual platform post"""
+    """Execute the actual platform post. Returns True on success, False on failure."""
     handler = SocialFactory.get_handler(platform)
-    handler.post(text, image_path)
+    return bool(handler.post(text, image_path))
 
 def update_platform_state(state, post_index, image_index):
     """Update state after successful posting"""
     state["post_index"] = post_index
     state["image_index"] = image_index
 
-if __name__ == "__main__":
-    # Entry point for the script. Parses command-line arguments and runs main().
-
+def _cli(argv=None):
+    """Parse args, run main(), and return a process exit code (0 or 1)."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--type", required=True, help="Type of posts (e.g., friday, ramadan, daily)")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
-    main(args.type)
+    return 0 if main(args.type) else 1
+
+if __name__ == "__main__":
+    # Entry point for the script. Parses command-line arguments and runs main(),
+    # exiting non-zero if any platform failed to post so CI reflects the real
+    # outcome instead of always reporting success.
+    sys.exit(_cli())
