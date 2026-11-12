@@ -1,0 +1,2 @@
+# Dev/test-only dependencies. Not needed to run the bot itself.
+pytest==9.2.0
