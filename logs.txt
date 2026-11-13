@@ -2028,3 +2028,9 @@ credits depleted
 2026-11-12 16:18:51,193 - INFO - Facebook response body: {"id":"122217510536780724","post_id":"575599462304325_122217510560780724"}
 2026-11-12 16:18:51,193 - INFO - Facebook post successful! Post ID: 122217510536780724
 2026-11-12 16:18:51,195 - INFO - Finished daily posts at 2026-11-12 16:18:51.195342
+2026-11-13 19:51:15,053 - INFO - Starting friday posts at 2026-11-13 19:51:15.053198
+2026-11-13 19:51:15,056 - INFO - Posting to Facebook. URL: https://graph.facebook.com/v22.0/575599462304325/photos | Has image: True
+2026-11-13 19:51:18,649 - INFO - Facebook response status: 200
+2026-11-13 19:51:18,649 - INFO - Facebook response body: {"id":"122217650804780724","post_id":"575599462304325_122217650828780724"}
+2026-11-13 19:51:18,649 - INFO - Facebook post successful! Post ID: 122217650804780724
+2026-11-13 19:51:18,673 - INFO - Finished friday posts at 2026-11-13 19:51:18.673870
