@@ -13,6 +13,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        # Push state back to master as a repo admin so the branch-protection
+        # ruleset's "Repository admin" bypass actor applies. The default
+        # GITHUB_TOKEN is authored as github-actions[bot], which does not
+        # hold that role, so pushes with it get rejected (GH013).
+        token: ${{ secrets.ADMIN_PUSH_TOKEN }}
 
     - name: Set up Python
       uses: actions/setup-python@v5
